@@ -1,0 +1,55 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+    {{ render(controller('DNTMBundle:Common:headerView', {})) }}
+{% endblock %}
+
+{% block columnLeft %}
+{% endblock %}
+
+{% block columnRight %}
+    <h1>{{ object.title }}</h1>
+    <h2>{{ object.description }}</h2>
+    <h3>Location</h3>
+    {{ object.addressZip }} {{ object.addressCity }} {{ object.addressStreet }}
+    <h3>Course times</h3>
+    <ul class="course-times" >
+        {% for ct in object.courseTimes %}
+            <li>{{ ct.from|date('Y-m-d') }} - {{ ct.to|date('Y-m-d') }}</li>
+            {% endfor %}
+    </ul>
+
+    <h3>Tags</h3>
+    <ul class="course-times" >
+        {% for t in object.tags %}
+            <li>
+                <a href="{{ path('course_list', { 'tag': t.slug }) }}">{{ t.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('course_order', {'slug': object.slug}) }}">ott leszek!</a>
+    <div class="">
+        <ul class="comments" >
+            {% for c in comments %}
+                <li>
+                    {{ include('DNTMBundle:Course:comment.html.twig', {'c': c}) }}
+                </li>
+            {% endfor %}
+        </ul>
+        <textarea id="inp-add-comment"></textarea>
+        <input type="button" value="add" id="btn-add-comment" />
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@DNTMBundle/Resources/public/js/courseview.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

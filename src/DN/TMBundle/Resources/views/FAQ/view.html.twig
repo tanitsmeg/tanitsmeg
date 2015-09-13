@@ -1,0 +1,62 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+    {{ render(controller('DNTMBundle:Common:headerView', {'uri': app.request.pathInfo})) }}
+{% endblock %}
+
+{% block columnLeftInside %}
+    {{ render(controller('DNTMBundle:Common:breadcrumb', {'uri': app.request.pathInfo, 'action': 'faq_view', 'title': 'faq' })) }}
+    <h1 class="page-title">FAQs</h1>
+    <div role="tabpanel" class="faq-panel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            {% for fc in faqCategories %}
+                <li role="presentation" {% if loop.first %}class="active" {% endif %}><a href="#fc-{{ fc.id }}" aria-controls="fc-{{ fc.id }}" role="tab" data-toggle="tab">{{ fc.title }}<span class="arrow"></span></a></li>
+            {% endfor %}
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            {% for fc in faqCategories %}
+                <div role="tabpanel" class="tab-pane fade in {% if loop.first %}active {% endif %}" id="fc-{{ fc.id }}">
+                    <div class="panel-group" id="faq-accordion-{{ fc.id }}" role="tablist" aria-multiselectable="true">
+                        {% for f in faqs if (f.faqCategory != null and f.faqCategory.id == fc.id) %}
+                            <div class="panel panel-faq">
+                                <div class="panel-heading" role="tab" id="faq-heading-{{ fc.id }}-{{ f.id }}">
+                                    <h3 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#faq-accordion-{{ fc.id }}" href="#faq-collapse-{{ f.id }}" aria-expanded="true" aria-controls="faq-collapse-{{ f.id }}">
+                                        {{ f.question }}
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="faq-collapse-{{ fc.id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="faq-heading-{{ fc.id }}-{{ f.id }}">
+                                    <div class="panel-body">
+                                        {{ f.answer|rte|raw }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block columnRight %}
+    {{ include('DNTMBundle:Common:areaImageBox.html.twig', { 'categorySlug': 'marketing-und-public-relations'  }) }}
+
+    {% if blocks is defined and blocks != null and blockFilters is defined %}
+        {{ include('DNTMBundle:Common:rightColumn.html.twig', { 'blocks': blocks, 'blockFilters': blockFilters }) }}
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

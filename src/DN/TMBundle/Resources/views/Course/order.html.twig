@@ -1,0 +1,37 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+    {{ render(controller('DNTMBundle:Common:headerView', {})) }}
+{% endblock %}
+
+{% block columnLeft %}
+{% endblock %}
+
+{% block columnRight %}
+    {{ form_errors(form) }}
+
+    {{ form_start(form, {'action': '', 'attr': {'class': 'default-form' }, 'method': 'POST'}) }}
+    
+    {% for ct in object.courseTimes %}
+        {{ ct.from|date('Y-m-d') }} - {{ ct.to|date('Y-m-d') }}
+    {% endfor %}
+    
+    {{ form_row(form.course) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.fullname) }}
+    {{ form_row(form.submit) }}
+
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@DNTMBundle/Resources/public/js/courseview.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

@@ -1,0 +1,22 @@
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        # Your other blocks
+
+sonata_admin:
+    title:      Tanitsmeg Admin
+    title_logo: bundles/dntm/img/logo-admin.png
+    
+    templates:
+        layout:                         DNTMBundle:Admin:standard_layout.html.twig
+#        edit:                           DNTMBundle:Admin:edit.html.twig
+#        list_block:                     DNTMBundle:Admin:block_admin_list.html.twig
+
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list }
+

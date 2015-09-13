@@ -1,0 +1,21 @@
+label.id: id
+label.title: title
+label.subtitle: subtitle
+label.slug: slug
+label.teaserText: teaserText
+label.teaserImage: teaserImage
+label.publishDate: publishDate
+label.unpublishDate: unpublishDate
+label.canonicalUrl: canonicalUrl
+label.noindex: noindex
+label.noarchive: noarchive
+label.nofollow: nofollow
+label.noydir: noydir
+label.noopd: noopd
+label.nosnippet: nosnippet
+label.category: category
+label.subcategory: subcategory
+label.product: product
+label.additionalCategories: additionalCategories
+label.additionalProducts: additionalProducts
+

@@ -1,0 +1,5 @@
+td_bfi_api_search:
+    resource: DN\TMBundle\Controller\Api\v1\SearchController
+    type: rest
+    prefix: /v1
+    name_prefix: api_v1_

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="{% block seo_description %}{% endblock %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="{% block seo_robots %}noindex, follow, noarchive, nosnippet, noodp, noydir{% endblock %}">
+
+        <title>{% block title %}{{ 'title.index'|trans }}{% endblock %}</title>
+
+        <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+        {% stylesheets filter="cssrewrite"
+            '@DNTMBundle/Resources/public/sass/tm.scss'
+            '@DNTMBundle/Resources/public/sass/jquery-ui.min.css'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        {% block css %}
+        {% endblock %}
+
+        <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+        {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <!-- Include the Facebook JavaScript SDK START -->
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.0";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- Include the Facebook JavaScript SDK END -->
+
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        {{ include('DNTMBundle::params.js.twig') }}
+
+        {% javascripts
+            'js/jquery.js'
+            'js/bootstrap.js'
+            '@DNTMBundle/Resources/public/js/l/jquery-ui.min.js'
+            '@DNTMBundle/Resources/public/js/signup_user_form.js'
+        %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        {% block javascript %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,30 @@
+#DNTMBundle_home:
+#    resource: "@DNTMBundle/Controller/FrontPageController.php"
+#    type:     annotation
+#    prefix:   /
+#    host: %domain%
+#    
+DNTMBundle_course:
+    resource: "@DNTMBundle/Controller/CourseController.php"
+    type:     annotation
+    prefix:   /
+    host: %domain%
+    
+DNTMBundle_user:
+    resource: "@DNTMBundle/Controller/UserController.php"
+    type:     annotation
+    prefix:   /
+    host: %domain%
+    
+DNTMBundle_comment:
+    resource: "@DNTMBundle/Controller/CommentController.php"
+    type:     annotation
+    prefix:   /
+    host: %domain%
+    
+DNTMBundle_common:
+    resource: "@DNTMBundle/Controller/CommonController.php"
+    type:     annotation
+    prefix:   /
+    host: %domain%
+    

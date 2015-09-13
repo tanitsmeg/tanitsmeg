@@ -1,0 +1,28 @@
+{% extends 'DNTMBundle::base.html.twig' %}
+
+{% block body %}
+    {% block header %}
+    {% endblock %}
+
+    {% block contentHead %}
+    {% endblock %}
+
+    <div class="row content">
+        <div class="col-lg-4 column-left">
+            {% block columnLeft %}
+            {% endblock %}
+        </div>
+        <div class="col-lg-8 column-right">
+            {% block columnRight %}
+            {% endblock %}
+        </div>
+    </div>
+    
+    <div class="row footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}

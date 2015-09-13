@@ -1,0 +1,72 @@
+{% extends 'DNTMBundle:Layout:1column.html.twig' %}
+
+{% block header %}
+    {{ render(controller('DNTMBundle:Common:headerView', {'uri': app.request.pathInfo})) }}
+{% endblock %}
+
+{% block contentHeader %}
+    <div class="row content-header business-front-page">
+{#        {% image '@DNTMBundle/Resources/public/img/business-header.png' %}
+        <img src="{{ asset_url }}" class="front-page-img" />
+        {% endimage %}
+#}        <div class="content-header-text">
+            <h1>Das beste Ausbildungsangebot für Ihre MitarbeiterInnen</h1>
+            <div class="info-teaser">
+                <div class="title">Beratung und Kontakt</div>
+                <div class="info">01-81178-10160</div>
+                <div class="link"><a href="mailto:business-service@bfi.wien">Business-Service@bfi.wien</a></div>
+            </div>
+            <div class="contact-box-wrapper">
+                <form class="contact-box">
+                    <span class="description-text">Callback Service</span>
+                    <input type="text" name="text" value="Ihre Telefonnummer" class="form-control number-field">
+                    <span class="tool-tip">Wir rufen Sie zurück!</span>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="two-column-container">
+        {{ form_start(form, {'action': path('custom_form_contact', {}), 'method': 'POST'}) }}
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+    
+    <div class="course-offers business">
+        <h2>Neues im Kursangebot</h2>
+        <p>Wählen Sie einen Ausbildungsschwehrpunkt aus,<br />um einen individuellen Kostenvoranschlag zu erhalten.</p>
+        <div class="clearfix">
+            <a href="#" class="course-wrapper persoenlichkeit">
+                <div class="category category-color category-icon-font clearfix">Persönlichkeit</div>
+                <div class="offer-link">Individuelles Angebot anfordern</div>
+            </a>
+            <a href="#" class="course-wrapper tourismus-hotel-gastronomie">
+                <div class="category category-color category-icon-font clearfix">Tourismus / Hotel / Gastronomie</div>
+                <div class="offer-link">Individuelles Angebot anfordern</div>
+            </a>
+            <a href="#" class="course-wrapper sprachen">
+                <div class="category category-color category-icon-font clearfix">Sprachen</div>
+                <div class="offer-link">Individuelles Angebot anfordern</div>
+            </a>
+            <a href="#" class="course-wrapper technik">
+                <div class="category category-color category-icon-font clearfix">Technik</div>
+                <div class="offer-link">Individuelles Angebot anfordern</div>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

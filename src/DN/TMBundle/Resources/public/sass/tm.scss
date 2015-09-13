@@ -1,0 +1,311 @@
+@import "bootstrap";
+
+$darkgrey :  #333333;
+$blue: #003871;
+
+@mixin roboto-condensed($weight) {
+    font-family: 'Roboto Condensed';
+    font-weight: $weight;
+}
+
+body {
+    @include roboto-condensed(300);
+    font-size: 17px;
+    color: $darkgrey;
+    line-height: 1.4em;
+}
+
+.course-list-left {        
+    background-color: #eee;
+
+    .box {
+        background-color: #fff;
+        padding: 10px;
+        margin-bottom: 15px;
+
+        &.tags {
+
+            div.title {
+                font-size: 1.6em;
+                padding: 10px 5px 10px 5px;
+                background-color: #009999;
+                color: #ffffff;
+            }
+
+            ul {
+                list-style-type: none;
+
+                li {
+                    font-size: 1.6em;
+                    padding: 10px 5px 10px 5px;
+                    background-color: #ffffff;
+                    color: #000000;
+                    border-bottom: 1px solid #ff6600;
+
+                    &.selected {
+                        background-color: #def5f0;
+                    }
+
+                    &.last {
+                        border-bottom-width: 0 !important;
+                    }
+
+                    &:hover {
+                        background-color: #def5f0;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        &.params {
+
+            ul {
+                list-style-type: none;
+
+                li {
+                    input {
+                        margin: 0 5px 0 5px;
+                    }
+
+                    font-size: 1.2em;
+                    padding: 10px 5px 10px 5px;
+                    color: #000000;
+
+                }
+            }
+
+        }
+
+        &.info {
+            color: #009999;
+
+            h3 {
+                font-size: 1.4em;
+            }
+
+            p {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+.course-list-results {
+    background-color: #eee;
+
+    .course-box {
+
+        .inner {
+            background-color: #fff;
+            border: 1px #999999 solid;
+            margin: 5px;
+
+            .image {
+                width: 100%;
+                height: 150px;
+                background-color: #009900;
+            }
+
+            .params {
+                float: right;
+            }
+
+            .title {
+                font-size: 1.2em;
+                color: #000000;
+            }
+
+            .teacher {
+                font-size: 1em;
+                color: #339999;
+            }
+
+            .address {
+                font-size: 1em;
+                color: #000000;
+            }
+
+            .bottom-box {
+                background-color: #def5f0;
+                margin: 5px;
+
+                .price {
+                    font-size: 1.3em;
+                    color: #ff3300;
+
+                    &.free {
+                        color: #009900 !important;
+                    }
+                }
+
+                .date {
+                    color: #000000;
+                    font-size: 1.2em;
+                }
+
+                .participant-count {
+                    color: #000000;
+                    font-size: 1.2em;
+                }
+
+            }
+        }
+    }
+}
+
+div.signup {
+    background-color: #009999;
+    padding: 10px;
+    
+    .form-row {
+        margin-bottom: 5px;
+        /*text-align: right;*/
+        
+        label {
+            color: #fff;
+        }
+
+        .accept-terms {
+            color: #fff;
+            
+            a {
+                color: #fff;
+                text-decoration: underline;
+            }
+        }
+        
+    }
+}
+
+div.header {
+    margin-bottom: 10px;
+
+    div.logo {
+        margin-top: 5px;
+        width: 242px;
+        height: 62px;
+        background-image: url('../../../bundles/dntm/img/logo.png');
+    }
+
+    div.header-menu {
+        background-color: #009999;
+        padding: 2px;
+
+        a {
+            color: #ffffff;
+            padding: 0 5px 0 5px;
+            border-right: 1px solid #ffffff;
+
+            &.last {
+                border-right-width: 0 !important;
+            }
+        }
+
+    }
+
+}
+
+div.content-head-top {
+
+    background-color: #009999;
+    color: white;
+
+    .content {
+        text-align: center;
+    }
+}
+
+div.content-head-form {
+
+    background-color: #009999;
+    color: white;
+
+    .order {
+        select {
+            width: 100%;
+        }
+        text-align: center;
+    }
+
+    .search {
+        input[type='text'] {
+            color: #000000;
+            width: 90%;
+        }
+        input[type='button'] {
+            width: 10%;
+        }
+        text-align: center;
+    }
+}
+
+div.teacher-infobox {
+
+    width: 100%;
+    border: 1px #009999 solid;
+    border-radius: 5px;
+
+    .image {
+        margin: 10px;
+    }
+
+    .name {
+        background-color: #009999;
+        color: #ffffff;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .list {
+        color: #009999;
+        padding-left: 10px;
+        
+        &:hover {
+            background-color: #eeeeee;
+            cursor: pointer;
+        }
+    }
+}
+
+div.course-edit {
+
+    border: 1px #def5f0 solid;
+    background-color: #ffffff;
+
+    label {
+        color: #009999;
+        font-weight: normal;
+        margin: 5px 10px 5px 10px;
+    }
+
+    input[type="text"] {
+        color: #009999;
+        font-weight: normal;
+        margin: 5px 10px 5px 10px;
+    }
+
+    textarea {
+        color: #009999;
+        font-weight: normal;
+        margin: 5px 10px 5px 10px;
+    }
+
+    h3 {
+        background-color: #def5f0;
+        color: #009999;
+        padding: 2px;
+        font-size: 1.2em;
+    }
+
+    ul.course-times {
+        li {
+            border: 1px #def5f0 solid;
+            list-style-type: none;
+        }
+
+    }
+
+}
+

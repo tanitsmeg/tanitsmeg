@@ -1,0 +1,23 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+{% endblock %}
+
+{% block columnLeft %}
+{% endblock %}
+
+{% block columnRight %}
+    <div class="row">
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+    {{ render(controller('DNTMBundle:Common:headerView', {'uri': app.request.pathInfo})) }}
+{% endblock %}
+
+{% block columnLeftBefore %}
+    {{ render(controller('DNTMBundle:Common:breadcrumb', {'uri': app.request.pathInfo, 'action': 'custom_page_view' })) }}
+{% endblock %}
+
+{% block columnLeftInside %}
+    {% if object != null %}
+{#        <h1 class="page-title">{{ object.title }}</h1>#}
+{#        <h2>{{ object.subtitle }}</h2>#}
+        {{ object.content|rte|raw }}
+    {% endif %}
+{% endblock %}
+
+{% block columnRight %}
+    {% if object != null and object.category != null and object.category.slug != null %}
+        {{ include('DNTMBundle:Common:areaImageBox.html.twig', { 'categorySlug': object.category.slug }) }}
+    {% else %}
+        {{ include('DNTMBundle:Common:areaImageBox.html.twig', { 'categorySlug': 'marketing-und-public-relations'  }) }}
+    {% endif %}
+
+    {% if blocks is defined and blocks != null and blockFilters is defined %}
+        {{ include('DNTMBundle:Common:rightColumn.html.twig', { 'blocks': blocks, 'blockFilters': blockFilters }) }}
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts 
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

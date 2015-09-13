@@ -1,0 +1,46 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+    {{ render(controller('DNTMBundle:Common:headerView', {'uri': app.request.pathInfo})) }}
+{% endblock %}
+
+{% form_theme form _self %}
+
+{% block checkbox_row %}
+    {% spaceless %}
+        {% if not compound -%}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {%- endif %}
+        {% if required -%}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {%- endif %}
+        {% if label is empty -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+        <div class="form-group">
+            <div class="checkbox">
+                <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+                    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+                    <span>{{ label|trans({}, translation_domain) }}</span>
+                </label>
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block columnLeftInside %}
+    {{ form_start(form, {'attr': {'class': 'default-form'}}) }}
+        {{ form_row(form.choice1, {'attr': {'class': 'select-styled'}}) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block columnRight %}
+    {{ include('DNTMBundle:Common:RightColumn/companySearchesBox.html.twig') }}
+    {{ include('DNTMBundle:Common:RightColumn/contactBox.html.twig', {'label': 'Haben Sie noch Fragen?', 'phonenumber': '01-81178-10100', 'email': 'beratung@bfi-wien.at'}) }}
+    {{ include('DNTMBundle:Common:RightColumn/newsletterBox.html.twig') }}
+    {{ include('DNTMBundle:Common:RightColumn/educationProgramBox.html.twig') }}
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}

@@ -1,0 +1,24 @@
+<div id="signup-user-form" title="Create new user">
+    <p class="signup-user-validateTips">All form fields are required.</p>
+    <p class="signup-user-messages"></p>
+
+    <form method="post" action="{{ path('user_signup_ajax') }}" >
+        <fieldset>
+            <label for="signup-user-name">Felhasználónév</label>
+            <input type="text" name="signup-user-name" id="signup-user-name" value="" class="text ui-widget-content ui-corner-all" placeholder="Felhasználónév" >
+
+            <label for="signup-user-email">Email</label>
+            <input type="text" name="signup-user-email" id="signup-user-email" value="" class="text ui-widget-content ui-corner-all" placeholder="Email" >
+
+            <label for="signup-user-password">Jelszó</label>
+            <input type="password" name="signup-user-password" id="signup-user-password" value="" class="text ui-widget-content ui-corner-all">
+
+            <label for="signup-user-password2">Jelszó megerősítése</label>
+            <input type="password" name="signup-user-password2" id="signup-user-password2" value="" class="text ui-widget-content ui-corner-all">
+
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+

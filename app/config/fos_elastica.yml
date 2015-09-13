@@ -1,0 +1,207 @@
+fos_elastica:
+    clients:
+        default: { host: %elastic_host%, port: %elastic_port% }
+    indexes:
+        site:
+            client: default
+            finder: ~
+            types:
+                article:
+                    mappings:
+                        title:
+                            type: string
+                            fields:
+                                raw:
+                                    type: string
+                                    index: not_analyzed
+                        subtitle:
+                            type: string
+                        teaserText:
+                            type: string
+                        content:
+                            type: string
+                        category:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                        subcategory:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                        additionalCategories:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                    persistence:
+                        driver: orm
+                        model: DN\TMBundle\Entity\Article
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+#                        elastica_to_model_transformer:
+#                            service: dn.tm.transformers.elastica.product
+                customPage:
+                    mappings:
+                        title:
+                            type: string
+                            fields:
+                                raw:
+                                    type: string
+                                    index: not_analyzed
+                        content:
+                            type: string
+                        category:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                        subcategory:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                    persistence:
+                        driver: orm
+                        model: DN\TMBundle\Entity\CustomPage
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+#                        elastica_to_model_transformer:
+#                            service: dn.tm.transformers.elastica.custom_page
+                news:
+                    mappings:
+                        title:
+                            type: string
+                            fields:
+                                raw:
+                                    type: string
+                                    index: not_analyzed
+                        subtitle:
+                            type: string
+                        teaserText:
+                            type: string
+                        content:
+                            type: string
+                        category:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                        subcategory:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                        additionalCategories:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                    persistence:
+                        driver: orm
+                        model: DN\TMBundle\Entity\News
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+#                        elastica_to_model_transformer:
+#                            service: dn.tm.transformers.elastica.product
+                product:
+                    mappings:
+                        title:
+                            type: string
+                            fields:
+                                raw:
+                                    type: string
+                                    index: not_analyzed
+                        subtitle:
+                            type: string
+                        courseContent:
+                            type: string
+                        infoVa:
+                            type: boolean
+                            index: not_analyzed
+                        rating:
+                            type: double
+                            index: not_analyzed
+                        productType:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: integer
+                                    index: not_analyzed
+                                name:
+                                    type: string
+                        category:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                        subcategory:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                        additionalCategories:
+                            type: "nested"
+                            properties:
+                                _id:
+                                    type: string
+                                    index: not_analyzed
+                                title:
+                                    type: string
+                        courses:
+                            type: "nested"
+                            properties:
+                                dayTimes:
+                                    type: string
+                                    index: not_analyzed
+                                beginDate:
+                                    type: date
+                                price:
+                                    type: float
+                                    index: not_analyzed
+                    persistence:
+                        driver: orm
+                        model: DN\TMBundle\Entity\Product
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                        elastica_to_model_transformer:
+                            service: dn.tm.transformers.elastica.product

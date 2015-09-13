@@ -1,0 +1,33 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+{% endblock %}
+
+{% block columnLeft %}
+{% endblock %}
+
+{% block columnRight %}
+    {{ form_errors(form) }}
+
+    {{ form_start(form, {'action': path('user_login', {}), 'attr': {'class': 'default-form' }, 'method': 'POST'}) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+
+    {{ form_end(form) }}
+
+    {% for m in messages %}
+        {{ m }}
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@DNTMBundle/Resources/public/js/courseedit.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

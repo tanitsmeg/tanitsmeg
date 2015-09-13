@@ -1,0 +1,14 @@
+git:
+    projekt könyvtár létrehozása, abba belépve:
+        git clone ssh://git@broz.hu:101/srv/git/tanitsmeg.git .
+    
+    localban fejlesztés után:
+        git fetch origin - szerverről leszedi a cuccot
+        git merge origin/[branch] - összemergeli a cuccot (branch jelenleg = master)
+        
+        branch váltás
+            git checkout master
+        
+        git gui-ban: 
+            commit megfelelő branchbe
+            push

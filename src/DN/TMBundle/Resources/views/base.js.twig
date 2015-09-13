@@ -1,0 +1,5 @@
+<script type="text/javascript">
+    {% if (jsParams is defined) %}
+        var params = {{ jsParams|json_encode|raw }};
+    {% endif %}    
+</script>

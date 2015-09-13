@@ -1,0 +1,24 @@
+{% for o in objectList%}
+    <a href="{{ path('course_view', {'slug': o.slug}) }}">
+        <div class="course-box col-md-4 col-sm-6 col-xs-12">
+            <div class="inner">
+                <div class="image">
+                    <div class="params">
+                    </div>
+                </div>
+                <div class="title">{{ o.title }}</div>
+                <div class="teacher">{{ o.title }}</div>
+                <div class="address">{{ o.addressZip }} {{ o.addressCity }} {{ o.addressStreet }}</div>
+                <div class="bottom-box row">
+                    <div class="col-md-6 left">
+                        <div class="price">{{ o.price }}</div>
+                        <div class="date">{{ o.price }}</div>
+                    </div>
+                    <div class="col-md-6 right">
+                        <div class="participant-count">Létszám: {{ o.price }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+{% endfor %}

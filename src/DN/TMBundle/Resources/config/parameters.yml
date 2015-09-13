@@ -1,0 +1,3 @@
+parameters:
+    page_types: {all: 'All pages', article: 'Article', news: 'News', trainer: 'Trainer', customPage: 'Custom Page', product: 'Product', productSearch: 'Product Search', newsOverview: 'News overview', articleOverview: 'Article overview', trainerOverview: 'Trainer overview', videoOverview: 'Video overview', categoryOverview: 'Category overview', faq: 'FAQ', frontPage: 'Front page'}
+    page_block_types: {article: 'Article', article_combo: 'Article 6 package', news: 'News', trainer: 'Trainer', custom: 'Custom', product_search: 'Course search', contact: 'Contact', faq: 'FAQ', newsletter: 'Newsletter', video: 'Video', footer: 'Footer', business_slideshow: 'Business Slideshow', education_program: 'Education Program'}

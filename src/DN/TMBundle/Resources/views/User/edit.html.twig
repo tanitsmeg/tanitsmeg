@@ -1,0 +1,38 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+    {{ render(controller('DNTMBundle:Common:headerView', {})) }}
+{% endblock %}
+
+{% block columnLeft %}
+{% endblock %}
+
+{% block columnRight %}
+    {{ form_errors(form) }}
+
+    {{ form_start(form, {'action': path('user_edit', {'slug': object.slug}), 'attr': {'class': 'default-form' }, 'method': 'POST'}) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.favoriteTags) }}
+    {{ form_row(form.birthyear) }}
+    {{ form_row(form.birthyearPublic) }}
+    {{ form_row(form.gender) }}
+    {{ form_row(form.genderPublic) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.description2) }}
+
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@DNTMBundle/Resources/public/js/courseedit.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

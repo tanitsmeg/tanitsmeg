@@ -1,0 +1,161 @@
+{% extends 'SonataAdminBundle:CRUD:base_list.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets filter="cssrewrite"
+        '@TDBFIBundle/Resources/public/sass/admin.scss'
+        '@TDBFIBundle/Resources/public/js/l/fancytree/skin-win8/ui.fancytree.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+{% endblock %}
+
+{% block list_table %}
+    {% include 'TDBFIBundle::base.js.twig' with {'jsParams': jsParams } %}
+
+    <div class="row admin-menu-editor">
+        <div class="col-lg-5 col-md-5">
+            <div id="menu-tree"></div>
+        </div>
+        <div class="col-lg-7 col-md-7">
+            <div class="menu-tree-params">
+                <div class="row menu-tree-field menu-id-container hidden">
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-id">id</label>
+                    </div>
+                    <div class="col-lg-11 col-md-11">
+                        <input type="text" id="menu-id" name="menu-id" readonly="readonly" value="" />
+                    </div>
+                </div>
+                <div class="row menu-tree-field menu-title-container hidden">
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-title">title</label>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" id="menu-title" name="menu-title" value="" />
+                    </div>
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-subtitle">subtitle</label>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" id="menu-subtitle" name="menu-subtitle" value="" />
+                    </div>
+                </div>
+                <div class="row menu-tree-field menu-type-container hidden">
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-type">type</label>
+                    </div>
+                    <div class="col-lg-11 col-md-11">
+                        <select id="menu-type">
+                            {% for key,val in menuTypes %}
+                                <option value="{{ key }}">{{ val }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="row menu-tree-field menu-external-url-container hidden">
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-external-url">url</label>
+                    </div>
+                    <div class="col-lg-11 col-md-11">
+                        <input type="text" id="menu-external-url" name="menu-external-url" value="" />
+                    </div>
+                </div>
+                <div class="row menu-tree-field menu-url-container hidden">
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-url">url</label>
+                    </div>
+                    <div class="col-lg-11 col-md-11">
+                        <input type="text" id="menu-url" name="menu-url" value="" />
+                    </div>
+                </div>
+                <div class="row menu-tree-field menu-redirect-id-container hidden">
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-redirect-id">redirect id</label>
+                    </div>
+                    <div class="col-lg-11 col-md-11">
+                        <input type="text" id="menu-redirect-id" name="menu-redirect-id" value="" />
+                    </div>
+                </div>
+                <div class="row menu-tree-field menu-overview-id-container hidden">
+                    <div class="col-lg-6 col-md-6">
+                        <label for="menu-overview-id">news category (presse,news,business,jobs,pressespiegel,lernen-und-leben)</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" id="menu-overview-id" name="menu-overview-id" value="" />
+                    </div>
+                </div>
+                <div class="row menu-tree-field menu-custom-page-container hidden">
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-custom-page">page</label>
+                    </div>
+                    <div class="col-lg-11 col-md-11">
+                        <select id="menu-custom-page">
+                            <option value="-1">--</option>
+                            {% for p in customPageList %}
+                                <option value="{{ p.id }}">{{ p.title }} ({{ p.id }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row menu-tree-field menu-show-in-menu hidden">
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-show-in-menu">show in menu</label>
+                    </div>
+                    <div class="col-lg-11 col-md-11">
+                        <input type="checkbox" id="menu-show-in-menu" name="menu-show-in-menu" checked="checked" />
+                    </div>
+                </div>
+
+                <div class="row menu-tree-field menu-built-in-page-container hidden">
+                    <div class="col-lg-1 col-md-1">
+                        <label for="menu-built-in-page">built in page</label>
+                    </div>
+                    <div class="col-lg-11 col-md-11">
+                        <select id="menu-built-in-page">
+                            {% for key,val in builtInPages %}
+                                <option value="{{ key }}">{{ val }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <form id="menu-form" action="#" method="post" >
+                        <input type="hidden" name="menu-structure" id="menu-structure" value="" />
+                        <input type="hidden" name="menu-last-key" id="menu-last-key" value="" />
+                        <div class="col-lg-12 col-md-12">
+                            <input type="button" id="button-menu-add" value="add new" />
+                            <input type="button" id="button-menu-remove" class="button-menu-remove hidden" value="remove selected" />
+                            <input type="button" id="button-menu-save" value="save" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block list_filters %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+        '@TDBFIBundle/Resources/public/js/l/fancytree/jquery.fancytree.js'
+        '@TDBFIBundle/Resources/public/js/l/fancytree/jquery.fancytree.dnd.js'
+        '@TDBFIBundle/Resources/public/js/l/fancytree/jquery.fancytree.edit.js'
+        '@TDBFIBundle/Resources/public/js/admin_menu.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+

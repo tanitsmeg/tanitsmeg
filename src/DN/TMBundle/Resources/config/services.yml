@@ -1,0 +1,14 @@
+imports:
+    - { resource: @DNTMBundle/Resources/config/forms.yml }
+
+parameters:
+    security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
+#    fos_elastica.finder.class: DN\TMBundle\Finder\TransformedFinder
+
+services:
+    dn.tm.manager.course:
+        class: DN\TMBundle\Manager\CourseManager
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+            container: "@service_container"
+

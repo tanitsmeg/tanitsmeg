@@ -1,0 +1,44 @@
+{% extends 'SonataAdminBundle:CRUD:base_list.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets filter="cssrewrite"
+        '@TDBFIBundle/Resources/public/sass/admin.scss'
+        '@TDBFIBundle/Resources/public/js/l/fancytree/skin-win8/ui.fancytree.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+{% endblock %}
+
+{% block list_table %}
+    {% include 'TDBFIBundle::base.js.twig' with {'jsParams': jsParams } %}
+
+    <div id="category-tree"></div>
+
+    <form id="category-form" action="#" method="post" >
+        <input type="hidden" name="category-structure" id="category-structure" value="" />
+        <input type="button" id="button-category-save" value="save" />
+    </form>
+{% endblock %}
+
+{% block list_filters %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+        '@TDBFIBundle/Resources/public/js/l/jquery-ui.min.js'
+        '@TDBFIBundle/Resources/public/js/l/fancytree/jquery.fancytree.js'
+        '@TDBFIBundle/Resources/public/js/l/fancytree/jquery.fancytree.dnd.js'
+        '@TDBFIBundle/Resources/public/js/l/fancytree/jquery.fancytree.edit.js'
+        '@TDBFIBundle/Resources/public/js/admin_category.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+

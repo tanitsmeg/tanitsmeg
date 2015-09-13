@@ -1,0 +1,28 @@
+services:
+    sonata.admin.Tag:
+        class: DN\TMBundle\Admin\TagAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Tag" }
+        arguments:
+            - ~
+            - DN\TMBundle\Entity\Tag
+            - ~
+
+    sonata.admin.Course:
+        class: DN\TMBundle\Admin\CourseAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Course" }
+        arguments:
+            - ~
+            - DN\TMBundle\Entity\Course
+            - ~
+
+    sonata.admin.CourseOrder:
+        class: DN\TMBundle\Admin\CourseOrderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Course Order" }
+        arguments:
+            - ~
+            - DN\TMBundle\Entity\CourseOrder
+            - ~
+

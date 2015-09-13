@@ -1,0 +1,12 @@
+label.title: megnevezés
+label.upload_image: kép feltöltése
+label.description: leírás
+label.offers: mit ad a tanfolyam a résztvevőknek?
+label.information: tudnivalók
+label.course_times: időpont
+label.date_from: első alkalom időpontja
+label.date_to: záró alkalom időpontja
+label.address_zip: irányítószám
+label.address_city: város
+label.address_street: utca
+label.address_comment: megjegyzés

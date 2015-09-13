@@ -1,0 +1,56 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+    {{ render(controller('DNTMBundle:Common:headerView', {})) }}
+{% endblock %}
+
+{% block contentHead %}
+    {{ include('DNTMBundle:Common:headmenu_teacher.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block columnLeft %}
+    {{ include('DNTMBundle:User:teacher_infobox.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block columnRight %}
+    <div class="course-edit">
+        {{ form_start(form, {'action': path('course_create', {}), 'attr': {'class': 'default-form' }, 'method': 'POST'}) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.image) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.description2) }}
+        {{ form_row(form.description3) }}
+        <h3>{{ 'label.course_times'|trans }}</h3>
+        <ul class="course-times" data-prototype="{{ form_widget(form.courseTimes.vars.prototype)|e }}">
+            {% for ct in form.courseTimes %}
+                <li>{{ form_row(ct.from) }}</li>
+                <li>{{ form_row(ct.to) }}</li>
+            {% endfor %}
+        </ul>
+        {{ form_row(form.addressZip) }}
+        {{ form_row(form.addressCity) }}
+        {{ form_row(form.addressStreet) }}
+        {{ form_row(form.addressComment) }}
+
+        <h3>Course tags</h3>
+        <ul class="course-tags" >
+            {% for t in form.tags %}
+                <li>{{ form_row(t) }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@DNTMBundle/Resources/public/js/courseedit.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

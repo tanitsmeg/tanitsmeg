@@ -1,0 +1,23 @@
+{{ include('DNTMBundle::params.js.twig') }}
+
+<div class="row header">
+    <div class="col-xs-12 col-sm-2">
+        <a href="{{ path('course_list') }}" >
+            <div class="logo" ></div>
+        </a>
+    </div>
+    <div class="hidden-xs col-sm-5"></div>
+    <div class="col-xs-12 col-sm-5">
+        <div class="header-menu">
+            <a href="{{ path('info_view') }}">hogyan működik</a>
+            {% if loggedIdUser %}
+                <a href="{{ path('user_edit', {'slug': loggedIdUser.slug }) }}">{{ loggedIdUser.name }}</a>
+                <a href="{{ path('user_logout') }}" class="last" >kilépés</a>
+            {% else %}
+                <a href="{{ path('user_signup') }}">regisztráció</a>
+                <a href="{{ path('teacher_signup') }}">regisztráció oktatóknak</a>
+                <a href="{{ path('user_login') }}" class="last" >belépés</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

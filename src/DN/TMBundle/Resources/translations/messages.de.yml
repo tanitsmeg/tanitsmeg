@@ -1,0 +1,65 @@
+title.index: bfi
+
+label.js-hello: js hello!
+
+label.date: Termine
+label.dates: Termines
+label.chooseDate: Termin wählen
+label.investment: Investition
+label.location: Ort
+label.content: Inhalt
+label.participant: Teilnehmer
+label.preconditions: Voraussetzungen
+label.coursePrecondition: Kurs-Voraussetzung
+label.benefits: Nutzen und Karriermöglichkeiten
+label.location: Ort
+label.promotions: Förderungen
+label.basis: Grundlagen
+label.downloads: Downloads
+label.backToSearchResults: Zurück zum Suchergebnis
+label.courseOffer: Kursangebot
+label.home: Home
+label.duration: Dauer
+label.ratings: Bevertungen
+label.characteristic: Besonderheiten
+label.costEstimation: Kostenvoranschlag anfordern
+label.nonBinding: Unverbindlich anfragen
+label.businessCustomer: Buchung für businesskunden
+label.private: Privat
+label.business: Business
+label.aboutUs: Über uns
+
+# admin; todo: separated file
+
+label.id: id
+label.active: aktiv
+
+label.effectedPageTypes: effected page types
+label.effectedPageIds: effected page ids
+label.effectedPagePaths: effected page paths (menu)
+label.displayedBlocks: displayed blocks
+label.rank: rank
+label.count: count
+__name__label__: label
+
+label.title: title
+label.subtitle: subtitle
+label.slug: slug
+label.teaserText: teaserText
+label.teaserImage: teaserImage
+label.publishDate: publishDate
+label.unpublishDate: unpublishDate
+label.canonicalUrl: canonicalUrl
+label.noindex: noindex
+label.noarchive: noarchive
+label.nofollow: nofollow
+label.noydir: noydir
+label.noopd: noopd
+label.nosnippet: nosnippet
+label.categories: categories
+label.category: category
+label.subcategory: subcategory
+label.product: product
+label.additionalCategories: additionalCategories
+label.additionalProducts: additionalProducts
+label.label: label (new,hot)

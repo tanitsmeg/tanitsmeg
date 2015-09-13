@@ -1,0 +1,12 @@
+<script type="text/javascript">
+    {% if (jsParams is defined) %}
+        if (typeof params === 'undefined') {
+            var params = {{ jsParams|json_encode|raw }};
+        } else {
+            var newParams = {{ jsParams|json_encode|raw }};
+            for (var attrname in newParams) {
+                params[attrname] = newParams[attrname];
+            }
+        }
+    {% endif %}    
+</script>

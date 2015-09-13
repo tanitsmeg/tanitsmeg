@@ -1,0 +1,63 @@
+services:
+    dn.tm.form.type.course_search:
+        class: DN\TMBundle\Form\Type\CourseSearchType
+        tags:
+            - { name: form.type, alias: course_search }
+
+    dn.tm.form.type.course:
+        class: DN\TMBundle\Form\Type\CourseType
+        tags:
+            - { name: form.type, alias: course }
+        arguments:
+            container: "@service_container"
+
+    dn.tm.form.type.course_time:
+        class: DN\TMBundle\Form\Type\CourseTimeType
+        tags:
+            - { name: form.type, alias: course_time }
+
+    dn.tm.form.type.location:
+        class: DN\TMBundle\Form\Type\LocationType
+        tags:
+            - { name: form.type, alias: location }
+
+    dn.tm.form.type.tag:
+        class: DN\TMBundle\Form\Type\TagType
+        tags:
+            - { name: form.type, alias: tag }
+
+    dn.tm.form.type.comment:
+        class: DN\TMBundle\Form\Type\CommentType
+        tags:
+            - { name: form.type, alias: comment }
+
+    dn.tm.form.type.user_signup:
+        class: DN\TMBundle\Form\Type\UserSignupType
+        tags:
+            - { name: form.type, alias: user_signup }
+
+    dn.tm.form.type.user_login:
+        class: DN\TMBundle\Form\Type\UserLoginType
+        tags:
+            - { name: form.type, alias: user_login }
+
+    dn.tm.form.type.user_data:
+        class: DN\TMBundle\Form\Type\UserDataType
+        tags:
+            - { name: form.type, alias: user_data }
+
+    dn.tm.form.type.teacher_data:
+        class: DN\TMBundle\Form\Type\TeacherDataType
+        tags:
+            - { name: form.type, alias: teacher_data }
+
+    dn.tm.form.type.teacher_signup:
+        class: DN\TMBundle\Form\Type\TeacherSignupType
+        tags:
+            - { name: form.type, alias: teacher_signup }
+
+    dn.tm.form.type.course_order:
+        class: DN\TMBundle\Form\Type\CourseOrderType
+        tags:
+            - { name: form.type, alias: course_order }
+

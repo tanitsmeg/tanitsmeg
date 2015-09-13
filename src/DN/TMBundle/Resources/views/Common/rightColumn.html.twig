@@ -1,0 +1,9 @@
+{% for block in blocks if block != null %}
+    {{ sonata_block_render({ 'type': 'dn.tm.block.' ~ block.type }, {
+            'blockFilters' : blockFilters,
+            'block' : block,
+            'request' : app.request,
+        }) }}
+{% endfor %}
+
+{#            'postedForm' : postedForm.form,#}

@@ -1,0 +1,105 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+{% endblock %}
+
+{% block columnLeft %}
+{% endblock %}
+
+{% block columnRight %}
+    <div class="signup">
+        <div class="row form-row">
+            <div class="col-xs-12 col-sm-12">
+                {{ form_start(form, {'action': path('teacher_signup', {}), 'attr': {'class': 'default-form' }, 'method': 'POST'}) }}
+            </div>
+            <div class="col-xs-12 col-sm-12">
+                {{ form_errors(form) }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-12 col-sm-2">
+                {{ form_label(form.name) }}
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-12 col-sm-2">
+                {{ form_label(form.email) }}
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                {{ form_widget(form.email) }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-12 col-sm-2">
+                {{ form_label(form.city) }}
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                {{ form_widget(form.city) }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-12 col-sm-2">
+                {{ form_label(form.homepage) }}
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                {{ form_widget(form.homepage) }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-12 col-sm-2">
+                {{ form_label(form.password) }}
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                {{ form_widget(form.password) }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-12 col-sm-2">
+                {{ form_label(form.password2) }}
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                {{ form_widget(form.password2) }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-12 col-sm-12 accept-terms">
+                elfogadom a <a href="{{ path('terms_view') }}">feltételeket</a>{{ form_widget(form.terms) }}
+            </div>
+        </div>
+
+        <div class="row form-row">
+            <div class="col-xs-12 col-sm-12">
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                {% for m in messages %}
+                    {{ m }}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <a href="{{ path('teacher_signup') }}">oktatói regisztráció</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@DNTMBundle/Resources/public/js/courseedit.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

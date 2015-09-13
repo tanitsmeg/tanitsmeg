@@ -1,0 +1,66 @@
+{% extends 'DNTMBundle:Layout:2column.html.twig' %}
+
+{% block header %}
+    {{ render(controller('DNTMBundle:Common:headerView', {})) }}
+{% endblock %}
+
+{% block contentHead %}
+    {{ include('DNTMBundle:Course:list_head.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block columnLeft %}
+    <div class="course-list-left">
+        <a href="{{ path('course_create') }}">új kurzus</a>
+
+        <div class="box tags">
+            <div class="title">Kategóriák</div>
+            <ul class="">
+                {% for t in tagList %}
+                    <li class="tag {% if loop.last %}last {% endif %} {% if filters['tags'] is not defined or t.slug in filters['tags'] %}selected {% endif %}" data-slug="{{ t.slug }}">
+                        {{ t.title }}
+                        {#                    <input type="checkbox" class="tag-check hidden" name="{{ t.slug }}" checked="checked" />#}
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+        <div class="box params">
+            <ul class="">
+                {% for key,ft in filterParamTitles %}
+                    <li>
+                        {% if key in filters['params'] %}
+                            <input type="checkbox" class="param-check" name="{{ key }}" checked="checked" /><label for="">{{ ft }}</label>
+                        {% else %}
+                            <input type="checkbox" class="param-check" name="{{ key }}"/><label for="">{{ ft }}</label>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="box info">
+            <h3>Önszervező</h3>
+            <p>Szeretnél...?</p>
+            <p>Szeretnél...?</p>
+            <p>Szeretnél...?</p>
+            <p>Szeretnél...?</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block columnRight %}
+    <div class="course-list-results row">
+        {{ include('DNTMBundle:Course:list_results.html.twig', {'objectList': objectList }) }}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ include('DNTMBundle:Common:footer.html.twig', {'': ''}) }}
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@DNTMBundle/Resources/public/js/courselist.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
